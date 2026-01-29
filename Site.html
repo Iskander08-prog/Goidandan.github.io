@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГидПостройки — универсальный помощник для самостоятельных строителей</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: #1e40af;
+        }
+
+        .btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 60px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #1e40af;
+        }
+
+        /* Problems Section */
+        .problems {
+            padding: 60px 0;
+            background: #f1f5f9;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .problem-icon {
+            width: 64px;
+            height: 64px;
+            background: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 28px;
+            color: #1e40af;
+        }
+
+        .problem-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .problem-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            display: flex;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+        }
+
+        .feature-blue { background: #1e40af; }
+        .feature-green { background: #059669; }
+        .feature-purple { background: #7c3aed; }
+        .feature-orange { background: #ea580c; }
+
+        .feature-content h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .feature-content p {
+            color: #64748b;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: #64748b;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        /* Monetization */
+        .monetization {
+            padding: 60px 0;
+            background: #f1f5f9;
+        }
+
+        .monetization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .monetization-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .monetization-icon {
+            width: 56px;
+            height: 56px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #475569;
+        }
+
+        .monetization-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .monetization-card p {
+            color: #64748b;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .price-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .price-free { background: #dcfce7; color: #166534; }
+        .price-blue { background: #dbeafe; color: #1d4ed8; }
+        .price-purple { background: #ede9fe; color: #7c3aed; }
+        .price-orange { background: #ffedd5; color: #ea580c; }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .rating {
+            color: #f59e0b;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .testimonial-project {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        .cta p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* Calculator Page */
+        .calculator-page {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .calculator-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .calculator-card h3 {
+            font-size: 18px;
+            margin: 16px 0 12px;
+            color: #0f172a;
+        }
+
+        .calculator-card p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .calculator-form {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .result-section {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 8px;
+            margin-top: 24px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item strong {
+            color: #0f172a;
+        }
+
+        /* Knowledge Base Page */
+        .knowledge-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .knowledge-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .knowledge-card h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .knowledge-card h3 span {
+            font-size: 24px;
+        }
+
+        .knowledge-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .knowledge-item h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .knowledge-item p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .knowledge-btn {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .knowledge-btn:hover {
+            background: #6d28d9;
+        }
+
+        .comparison-text {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            display: none;
+        }
+
+        /* Services Page */
+        .services-page {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .services-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-content h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            color: #0f172a;
+        }
+
+        .services-content p {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .knowledge-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🔨</span>
+                    <span>ГидПостройки</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a data-section="home">Главная</a></li>
+                        <li><a data-section="calculators">Калькуляторы</a></li>
+                        <li><a data-section="instructions">Инструкции</a></li>
+                        <li><a data-section="knowledge">База знаний</a></li>
+                    </ul>
+                </nav>
+                <button class="btn" data-section="calculators">Начать строительство</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <main id="home-section">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Универсальный помощник для самостоятельных строителей</h1>
+                        <p>Строите дом, дачу или делаете ремонт? ГидПостройки поможет избежать критических ошибок и сэкономить до 40% бюджета!</p>
+                        <div class="hero-buttons">
+                            <button class="btn" data-section="calculators">Рассчитать материалы</button>
+                            <button class="btn btn-outline" data-section="instructions">Смотреть инструкции</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problems Section -->
+        <section class="problems">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Решаем ваши главные проблемы</h2>
+                    <p>Почему тысячи строителей выбирают ГидПостройки</p>
+                </div>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">❓</div>
+                        <h3>Не знаете с чего начать?</h3>
+                        <p>Четкий план работ от фундамента до отделки</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">⚠️</div>
+                        <h3>Боитесь ошибиться?</h3>
+                        <p>Пошаговые инструкции с 3D-визуализацией</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📏</div>
+                        <h3>Не можете рассчитать материалы?</h3>
+                        <p>Точные калькуляторы для всех этапов</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">🏠</div>
+                        <h3>Не понимаете последовательность?</h3>
+                        <p>Логическая структура строительного процесса</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Наши возможности</h2>
+                    <p>Все инструменты для успешного строительства в одном месте</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon feature-blue">🧮</div>
+                        <div class="feature-content">
+                            <h3>Калькуляторы материалов</h3>
+                            <p>Точные расчеты кирпича, бетона, утеплителя и других материалов</p>
+                            <ul class="feature-list">
+                                <li>Расчет кирпича, блоков, досок</li>
+                                <li>Калькуляторы бетона и штукатурки</li>
+                                <li>Сравнение цен от производителей</li>
+                            </ul>
+                            <button class="btn" data-section="calculators" style="padding: 8px 16px; font-size: 14px;">Перейти к разделу</button>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon feature-green">📚</div>
+                        <div class="feature-content">
+                            <h3>Пошаговые инструкции</h3>
+                            <p>3D-визуализация и чек-листы для каждого этапа строительства</p>
+                            <ul class="feature-list">
+                                <li>Анимированные 3D-инструкции</li>
+                                <li>Чек-листы контроля качества</li>
+                                <li>Типовые ошибки и решения</li>
+                            </ul>
+                            <button class="btn" data-section="instructions" style="padding: 8px 16px; font-size: 14px;">Перейти к разделу</button>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon feature-purple">📖</div>
+                        <div class="feature-content">
+                            <h3>База знаний</h3>
+                            <p>Сравнения материалов, технологии и нормативы в понятном формате</p>
+                            <ul class="feature-list">
+                                <li>Сравнение газобетон vs кирпич</li>
+                                <li>Технологии для разных регионов</li>
+                                <li>СНИПы в понятном формате</li>
+                            </ul>
+                            <button class="btn" data-section="knowledge" style="padding: 8px 16px; font-size: 14px;">Перейти к разделу</button>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon feature-orange">📍</div>
+                        <div class="feature-content">
+                            <h3>Карта поставщиков</h3>
+                            <p>Проверенные магазины с отзывами и актуальными ценами</p>
+                            <ul class="feature-list">
+                                <li>Проверенные поставщики с отзывами</li>
+                                <li>Сравнение цен и рейтингов</li>
+                                <li>Акции и скидки</li>
+                            </ul>
+                            <button class="btn" data-section="suppliers" style="padding: 8px 16px; font-size: 14px;">Перейти к разделу</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monetization Section -->
+        <section class="monetization">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Монетизация проекта</h2>
+                    <p>Четыре уровня дохода для устойчивого развития</p>
+                </div>
+                <div class="monetization-grid">
+                    <div class="monetization-card">
+                        <div class="monetization-icon">🛒</div>
+                        <h3>Партнерские комиссии</h3>
+                        <p>До 10% с каждой покупки через наши ссылки на Леруа Мерлен, Петрович и производителей</p>
+                        <span class="price-tag price-free">Бесплатно</span>
+                    </div>
+                    <div class="monetization-card">
+                        <div class="monetization-icon">💰</div>
+                        <h3>Индивидуальные расчеты</h3>
+                        <p>Персональная смета, консультации и выездная проверка готовности объекта</p>
+                        <span class="price-tag price-blue">от 1990 ₽</span>
+                        <button class="btn" data-section="services" style="margin-top: 12px; padding: 6px 12px; font-size: 12px;">Подробнее</button>
+                    </div>
+                    <div class="monetization-card">
+                        <div class="monetization-icon">⭐</div>
+                        <h3>Премиум-доступ</h3>
+                        <p>Расширенные калькуляторы, закрытые инструкции и персональный куратор</p>
+                        <span class="price-tag price-purple">490 ₽/месяц</span>
+                        <button class="btn" data-section="services" style="margin-top: 12px; padding: 6px 12px; font-size: 12px;">Подробнее</button>
+                    </div>
+                    <div class="monetization-card">
+                        <div class="monetization-icon">📺</div>
+                        <h3>Реклама и интеграции</h3>
+                        <p>Баннеры, платные обзоры и совместные вебинары с партнерами</p>
+                        <span class="price-tag price-orange">По запросу</span>
+                        <button class="btn" data-section="services" style="margin-top: 12px; padding: 6px 12px; font-size: 12px;">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Отзывы наших пользователей</h2>
+                    <p>Реальные истории успеха самостоятельных строителей</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="rating">★★★★★</div>
+                        <p class="testimonial-text">"Сэкономил 350 тысяч рублей на прорабе! Калькуляторы точные, инструкции спасли от ошибок с фундаментом."</p>
+                        <div class="testimonial-author">Александр, 34 года</div>
+                        <div class="testimonial-project">Строительство дома 120 м²</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">★★★★★</div>
+                        <p class="testimonial-text">"Благодаря чек-листам не пропустила ни одного важного этапа. Теперь делюсь сайтом со всеми друзьями!"</p>
+                        <div class="testimonial-author">Марина, 28 лет</div>
+                        <div class="testimonial-project">Ремонт квартиры</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">★★★★★</div>
+                        <p class="testimonial-text">"Карта поставщиков помогла найти материалы на 15% дешевле. Отличный ресурс для самостоятельных строителей!"</p>
+                        <div class="testimonial-author">Дмитрий, 42 года</div>
+                        <div class="testimonial-project">Строительство бани</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Готовы начать строительство?</h2>
+                <p>Присоединяйтесь к тысячам успешных самостоятельных строителей</p>
+                <div class="hero-buttons">
+                    <button class="btn" data-section="calculators">Рассчитать материалы бесплатно</button>
+                    <button class="btn btn-outline" data-section="instructions">Получить консультацию</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Calculator Section -->
+    <section id="calculators-section" class="calculator-page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Калькуляторы строительных материалов</h2>
+                <p>Точные расчеты для вашего проекта</p>
+            </div>
+            <div class="calculator-grid">
+                <div class="calculator-card" onclick="showCalculatorForm('Кирпич')">
+                    <div style="font-size: 48px;">🧱</div>
+                    <h3>Кирпич</h3>
+                    <p>Расчет количества кирпича для стен и перегородок</p>
+                    <button class="btn" style="padding: 6px 12px; font-size: 12px;">Рассчитать</button>
+                </div>
+                <div class="calculator-card" onclick="showCalculatorForm('Бетон')">
+                    <div style="font-size: 48px;">🏗️</div>
+                    <h3>Бетон</h3>
+                    <p>Калькулятор бетона для фундамента, стяжки и конструкций</p>
+                    <button class="btn" style="padding: 6px 12px; font-size: 12px;">Рассчитать</button>
+                </div>
+                <div class="calculator-card" onclick="showCalculatorForm('Утеплитель')">
+                    <div style="font-size: 48px;">❄️</div>
+                    <h3>Утеплитель</h3>
+                    <p>Расчет утеплителя для стен, кровли и пола</p>
+                    <button class="btn" style="padding: 6px 12px; font-size: 12px;">Рассчитать</button>
+                </div>
+                <div class="calculator-card" onclick="showCalculatorForm('Штукатурка')">
+                    <div style="font-size: 48px;">🎨</div>
+                    <h3>Штукатурка</h3>
+                    <p>Калькулятор штукатурки для внутренних и наружных работ</p>
+                    <button class="btn" style="padding: 6px 12px; font-size: 12px;">Рассчитать</button>
+                </div>
+                <div class="calculator-card" onclick="showCalculatorForm('Краска')">
+                    <div style="font-size: 48px;">🖌️</div>
+                    <h3>Краска</h3>
+                    <p>Расчет краски для стен, потолков и фасадов</p>
+                    <button class="btn" style="padding: 6px 12px; font-size: 12px;">Рассчитать</button>
+                </div>
+                <div class="calculator-card" onclick="showCalculatorForm('Доски')">
+                    <div style="font-size: 48px;">🪵</div>
+                    <h3>Доски</h3>
+                    <p>Калькулятор пиломатериалов для обрешетки и каркаса</p>
+                    <button class="btn" style="padding: 6px 12px; font-size: 12px;">Рассчитать</button>
+                </div>
+            </div>
+            
+            <div id="calculator-form" class="calculator-form">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h3 id="calculator-title">Калькулятор материалов</h3>
+                    <button onclick="hideCalculatorForm()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="area">Площадь поверхности (м²)</label>
+                        <input type="number" id="area" placeholder="Введите площадь">
+                    </div>
+                    <div class="form-group">
+                        <label for="thickness">Толщина слоя (мм)</label>
+                        <input type="number" id="thickness" placeholder="Введите толщину">
+                    </div>
+                </div>
+                <button class="btn" onclick="calculateMaterials()">Рассчитать количество</button>
+                
+                <div class="result-section" id="result-section" style="display: none;">
+                    <h4>Результат расчета</h4>
+                    <div class="result-item">
+                        <span>Необходимое количество:</span>
+                        <strong id="quantity-result">25 мешков</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Стоимость (средняя):</span>
+                        <strong id="cost-result">12 500 ₽</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Запас на брак:</span>
+                        <strong>+10%</strong>
+                    </div>
+                    <a href="https://kirov.lemanapro.ru/?ysclid=ml01lgrpp5400169064&utm_referrer=https%3A%2F%2Fyandex.ru%2F" target="_blank" class="btn" style="margin-top: 16px; width: 100%; text-decoration: none; display: inline-block; text-align: center;">Купить материалы</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructions Section -->
+    <section id="instructions-section" class="calculator-page" style="text-align: center; padding: 80px 0;">
+        <div class="container">
+            <h2>Пошаговые инструкции</h2>
+            <p style="margin: 20px 0 40px; font-size: 18px;">Раздел находится в разработке. Скоро будут доступны 3D-инструкции!</p>
+            <button class="btn" data-section="home">Вернуться на главную</button>
+        </div>
+    </section>
+
+    <!-- Knowledge Base Section -->
+    <section id="knowledge-section" class="calculator-page">
+        <div class="container">
+            <div class="section-title">
+                <h2>База знаний</h2>
+                <p>Сравнения материалов, технологии и нормативы</p>
+            </div>
+            
+            <div class="knowledge-content">
+                <div class="knowledge-card">
+                    <h3><span>📄</span> Сравнение материалов</h3>
+                    <div class="knowledge-item">
+                        <h4>Газобетон vs Кирпич</h4>
+                        <p>Сравнение по стоимости, теплопроводности, прочности и монтажу</p>
+                        <button class="knowledge-btn" onclick="toggleComparison('comparison1')">Подробнее</button>
+                        <div id="comparison1" class="comparison-text">
+                            <strong>Газобетон:</strong> легкий, отличная теплоизоляция, быстрый монтаж, но требует защиты от влаги.<br>
+                            <strong>Кирпич:</strong> высокая прочность, долговечность, хорошая звукоизоляция, но дороже и трудоемче в укладке.<br>
+                            <strong>Вывод:</strong> для частного дома лучше газобетон, для многоэтажек - кирпич.
+                        </div>
+                    </div>
+                    <div class="knowledge-item">
+                        <h4>Пеноплекс vs Минвата</h4>
+                        <p>Сравнение утеплителей для разных климатических условий</p>
+                        <button class="knowledge-btn" onclick="toggleComparison('comparison2')">Подробнее</button>
+                        <div id="comparison2" class="comparison-text">
+                            <strong>Пеноплекс:</strong> низкая теплопроводность, не впитывает воду, долговечный, но горючий.<br>
+                            <strong>Минвата:</strong> негорючая, хорошая звукоизоляция, "дышит", но теряет свойства при намокании.<br>
+                            <strong>Вывод:</strong> для фундамента и цоколя - пеноплекс, для стен и кровли - минвата.
+                        </div>
+                    </div>
+                    <div class="knowledge-item">
+                        <h4>Линолеум vs Ламинат</h4>
+                        <p>Выбор напольного покрытия для разных помещений</p>
+                        <button class="knowledge-btn" onclick="toggleComparison('comparison3')">Подробнее</button>
+                        <div id="comparison3" class="comparison-text">
+                            <strong>Линолеум:</strong> водостойкий, недорогой, легко укладывается, но менее долговечный.<br>
+                            <strong>Ламинат:</strong> эстетичный, износостойкий, имитирует натуральное дерево, но боится воды.<br>
+                            <strong>Вывод:</strong> для кухни и прихожей - линолеум, для спальни и гостиной - ламинат.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="knowledge-card">
+                    <h3><span>📊</span> Технологии и нормативы</h3>
+                    <div class="knowledge-item">
+                        <h4>Строительство на глинистых грунтах</h4>
+                        <p>Особенности фундаментов и технологий для разных типов почв</p>
+                        <button class="knowledge-btn" onclick="toggleComparison('comparison4')">Подробнее</button>
+                        <div id="comparison4" class="comparison-text">
+                            <strong>Проблема:</strong> глинистые грунты пучинистые - зимой вспучиваются, летом оседают.<br>
+                            <strong>Решение:</strong> заглубленный ленточный фундамент ниже глубины промерзания или свайно-винтовой фундамент.<br>
+                            <strong>Важно:</strong> обязательно устройство дренажной системы и утепление отмостки.
+                        </div>
+                    </div>
+                    <div class="knowledge-item">
+                        <h4>СНИПы в понятном формате</h4>
+                        <p>Основные нормативы для частного строительства без юридического жаргона</p>
+                        <button class="knowledge-btn" onclick="toggleComparison('comparison5')">Подробнее</button>
+                        <div id="comparison5" class="comparison-text">
+                            <strong>Высота потолков:</strong> минимум 2.5 м в жилых помещениях.<br>
+                            <strong>Расстояние до соседей:</strong> минимум 3 м от окон до границы участка.<br>
+                            <strong>Пожарная безопасность:</strong> расстояние между домами 6-15 м в зависимости от материалов.<br>
+                            <strong>Санитарные нормы:</strong> туалет и септик не ближе 20 м от источника воды.
+                        </div>
+                    </div>
+                    <div class="knowledge-item">
+                        <h4>Технологии для северных регионов</h4>
+                        <p>Особенности строительства в условиях сурового климата</p>
+                        <button class="knowledge-btn" onclick="toggleComparison('comparison6')">Подробнее</button>
+                        <div id="comparison6" class="comparison-text">
+                            <strong>Фундамент:</strong> обязательно ниже глубины промерзания (1.5-2 м).<br>
+                            <strong>Стены:</strong> толщина не менее 50 см, двойное утепление.<br>
+                            <strong>Крыша:</strong> уклон 45-60° для схода снега, усиленная стропильная система.<br>
+                            <strong>Коммуникации:</strong> все трубы в утепленном контуре или с подогревом.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn" data-section="home">Вернуться на главную</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suppliers Section -->
+    <section id="suppliers-section" class="calculator-page" style="text-align: center; padding: 80px 0;">
+        <div class="container">
+            <h2>Карта проверенных поставщиков</h2>
+            <p style="margin: 20px 0 40px; font-size: 18px;">Раздел находится в разработке. Скоро будет доступна карта поставщиков!</p>
+            <button class="btn" data-section="home">Вернуться на главную</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services-section" class="services-page">
+        <div class="container">
+            <div class="services-content">
+                <h2>Наши услуги</h2>
+                <p>Мы предлагаем профессиональные услуги для самостоятельных строителей:</p>
+                <ul style="text-align: left; max-width: 600px; margin: 0 auto 32px; line-height: 1.8;">
+                    <li><strong>Премиум-доступ</strong> — 490 ₽/месяц: расширенные калькуляторы, закрытые инструкции, персональный куратор</li>
+                    <li><strong>Индивидуальные расчеты</strong> — от 1990 ₽: персональная смета под ваш проект</li>
+                    <li><strong>Консультации</strong> — 2900 ₽/час: профессиональная консультация по видеосвязи</li>
+                    <li><strong>Проверка объекта</strong> — 5000 ₽: выезд специалиста для проверки готовности объекта</li>
+                </ul>
+                <button class="btn" data-section="home">Вернуться на главную</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="color: white; font-size: 20px; margin-bottom: 20px;">
+                        <span class="logo-icon">🔨</span>
+                        <span>ГидПостройки</span>
+                    </div>
+                    <p style="color: #94a3b8;">Универсальный помощник для самостоятельных строителей и ремонтников</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a data-section="calculators">Калькуляторы</a></li>
+                        <li><a data-section="instructions">Инструкции</a></li>
+                        <li><a data-section="knowledge">База знаний</a></li>
+                        <li><a data-section="suppliers">Карта поставщиков</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Услуги</h3>
+                    <ul class="footer-links">
+                        <li><a data-section="services">Премиум-доступ</a></li>
+                        <li><a data-section="services">Индивидуальные расчеты</a></li>
+                        <li><a data-section="services">Консультации</a></li>
+                        <li><a data-section="services">Проверка объекта</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li>support@gidpostroiki.ru</li>
+                        <li>+7 (495) 123-45-67</li>
+                        <li>г. Москва, ул. Строительная, 1</li>
+                        <li>Основатель: Шакиров Искандер Рустамович</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ГидПостройки. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('calculators-section').style.display = 'none';
+            document.getElementById('instructions-section').style.display = 'none';
+            document.getElementById('knowledge-section').style.display = 'none';
+            document.getElementById('suppliers-section').style.display = 'none';
+            document.getElementById('services-section').style.display = 'none';
+            
+            // Show selected section
+            if (sectionId === 'home') {
+                document.getElementById('home-section').style.display = 'block';
+            } else if (sectionId === 'calculators') {
+                document.getElementById('calculators-section').style.display = 'block';
+            } else if (sectionId === 'instructions') {
+                document.getElementById('instructions-section').style.display = 'block';
+            } else if (sectionId === 'knowledge') {
+                document.getElementById('knowledge-section').style.display = 'block';
+            } else if (sectionId === 'suppliers') {
+                document.getElementById('suppliers-section').style.display = 'block';
+            } else if (sectionId === 'services') {
+                document.getElementById('services-section').style.display = 'block';
+            }
+            
+            // Update active navigation link
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate the correct link
+            const targetLink = Array.from(navLinks).find(link => 
+                link.getAttribute('data-section') === sectionId
+            );
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+        }
+
+        // Toggle comparison text visibility
+        function toggleComparison(comparisonId) {
+            const comparisonElement = document.getElementById(comparisonId);
+            if (comparisonElement.style.display === 'block') {
+                comparisonElement.style.display = 'none';
+            } else {
+                // Hide all other comparisons first
+                const allComparisons = document.querySelectorAll('.comparison-text');
+                allComparisons.forEach(comp => {
+                    comp.style.display = 'none';
+                });
+                // Show the clicked comparison
+                comparisonElement.style.display = 'block';
+            }
+        }
+
+        // Add event listeners to all navigation elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers to all elements with data-section attribute
+            const navElements = document.querySelectorAll('[data-section]');
+            navElements.forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    showSection(section);
+                });
+            });
+            
+            // Initialize home page
+            showSection('home');
+        });
+
+        // Calculator functionality
+        let currentCalculator = '';
+        
+        function showCalculatorForm(calculatorName) {
+            currentCalculator = calculatorName;
+            document.getElementById('calculator-title').textContent = `Калькулятор ${calculatorName}`;
+            document.getElementById('calculator-form').style.display = 'block';
+            document.getElementById('result-section').style.display = 'none';
+        }
+        
+        function hideCalculatorForm() {
+            document.getElementById('calculator-form').style.display = 'none';
+        }
+        
+        function calculateMaterials() {
+            const area = parseFloat(document.getElementById('area').value) || 0;
+            const thickness = parseFloat(document.getElementById('thickness').value) || 0;
+            
+            if (area <= 0 || thickness <= 0) {
+                alert('Пожалуйста, введите корректные значения площади и толщины.');
+                return;
+            }
+            
+            // Simple calculation logic (for demonstration)
+            let quantity, cost;
+            
+            if (currentCalculator === 'Кирпич') {
+                quantity = Math.ceil(area * 50); // 50 bricks per m²
+                cost = quantity * 15; // 15 rubles per brick
+            } else if (currentCalculator === 'Бетон') {
+                quantity = Math.ceil((area * thickness / 1000) * 1.2); // 1.2 m³ per m² with thickness
+                cost = quantity * 4000; // 4000 rubles per m³
+            } else if (currentCalculator === 'Утеплитель') {
+                quantity = Math.ceil(area * 1.1); // 1.1 m² per m² with waste
+                cost = quantity * 300; // 300 rubles per m²
+            } else if (currentCalculator === 'Штукатурка') {
+                quantity = Math.ceil((area * thickness / 10) * 1.1); // thickness in mm, 1.1 kg per mm per m²
+                cost = quantity * 25; // 25 rubles per kg
+            } else if (currentCalculator === 'Краска') {
+                quantity = Math.ceil(area * 0.15); // 0.15 liters per m²
+                cost = quantity * 200; // 200 rubles per liter
+            } else if (currentCalculator === 'Доски') {
+                quantity = Math.ceil(area * 2); // 2 boards per m²
+                cost = quantity * 120; // 120 rubles per board
+            }
+            
+            document.getElementById('quantity-result').textContent = 
+                currentCalculator === 'Бетон' ? `${quantity} м³` : 
+                currentCalculator === 'Краска' ? `${quantity} литров` : 
+                `${quantity} единиц`;
+            document.getElementById('cost-result').textContent = `${cost.toLocaleString('ru-RU')} ₽`;
+            
+            document.getElementById('result-section').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
