@@ -23,7 +23,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -85,7 +84,6 @@
             background: #1d4ed8;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
             color: white;
@@ -134,7 +132,6 @@
             color: #1e40af;
         }
 
-        /* Problems Section */
         .problems {
             padding: 60px 0;
             background: #f1f5f9;
@@ -201,7 +198,6 @@
             line-height: 1.6;
         }
 
-        /* Features Section */
         .features {
             padding: 60px 0;
         }
@@ -264,7 +260,6 @@
             font-weight: bold;
         }
 
-        /* Monetization */
         .monetization {
             padding: 60px 0;
             background: #f1f5f9;
@@ -322,7 +317,6 @@
         .price-purple { background: #ede9fe; color: #7c3aed; }
         .price-orange { background: #ffedd5; color: #ea580c; }
 
-        /* Testimonials */
         .testimonials {
             padding: 60px 0;
         }
@@ -363,7 +357,6 @@
             font-size: 14px;
         }
 
-        /* CTA */
         .cta {
             background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
             color: white;
@@ -385,7 +378,6 @@
             margin-right: auto;
         }
 
-        /* Footer */
         footer {
             background: #0f172a;
             color: white;
@@ -432,7 +424,6 @@
             font-size: 14px;
         }
 
-        /* Calculator Page */
         .calculator-page {
             display: none;
             padding: 40px 0;
@@ -527,7 +518,6 @@
             color: #0f172a;
         }
 
-        /* Knowledge Base Page */
         .knowledge-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -600,7 +590,6 @@
             display: none;
         }
 
-        /* Services Page */
         .services-page {
             display: none;
             padding: 40px 0;
@@ -625,7 +614,6 @@
             line-height: 1.6;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -650,7 +638,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -671,9 +658,7 @@
         </div>
     </header>
 
-    <!-- Home Section -->
     <main id="home-section">
-        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
@@ -689,7 +674,6 @@
             </div>
         </section>
 
-        <!-- Problems Section -->
         <section class="problems">
             <div class="container">
                 <div class="section-title">
@@ -721,7 +705,6 @@
             </div>
         </section>
 
-        <!-- Features Section -->
         <section class="features">
             <div class="container">
                 <div class="section-title">
@@ -785,7 +768,6 @@
             </div>
         </section>
 
-        <!-- Monetization Section -->
         <section class="monetization">
             <div class="container">
                 <div class="section-title">
@@ -824,7 +806,6 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
         <section class="testimonials">
             <div class="container">
                 <div class="section-title">
@@ -854,7 +835,6 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
         <section class="cta">
             <div class="container">
                 <h2>Готовы начать строительство?</h2>
@@ -867,7 +847,6 @@
         </section>
     </main>
 
-    <!-- Calculator Section -->
     <section id="calculators-section" class="calculator-page">
         <div class="container">
             <div class="section-title">
@@ -950,7 +929,6 @@
         </div>
     </section>
 
-    <!-- Instructions Section -->
     <section id="instructions-section" class="calculator-page" style="text-align: center; padding: 80px 0;">
         <div class="container">
             <h2>Пошаговые инструкции</h2>
@@ -959,7 +937,6 @@
         </div>
     </section>
 
-    <!-- Knowledge Base Section -->
     <section id="knowledge-section" class="calculator-page">
         <div class="container">
             <div class="section-title">
@@ -1045,7 +1022,6 @@
         </div>
     </section>
 
-    <!-- Suppliers Section -->
     <section id="suppliers-section" class="calculator-page" style="text-align: center; padding: 80px 0;">
         <div class="container">
             <h2>Карта проверенных поставщиков</h2>
@@ -1054,7 +1030,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services-section" class="services-page">
         <div class="container">
             <div class="services-content">
@@ -1071,7 +1046,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1117,9 +1091,7 @@
     </footer>
 
     <script>
-        // Navigation functionality
         function showSection(sectionId) {
-            // Hide all sections
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('calculators-section').style.display = 'none';
             document.getElementById('instructions-section').style.display = 'none';
@@ -1127,7 +1099,6 @@
             document.getElementById('suppliers-section').style.display = 'none';
             document.getElementById('services-section').style.display = 'none';
             
-            // Show selected section
             if (sectionId === 'home') {
                 document.getElementById('home-section').style.display = 'block';
             } else if (sectionId === 'calculators') {
@@ -1142,13 +1113,11 @@
                 document.getElementById('services-section').style.display = 'block';
             }
             
-            // Update active navigation link
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => {
                 link.classList.remove('active');
             });
             
-            // Find and activate the correct link
             const targetLink = Array.from(navLinks).find(link => 
                 link.getAttribute('data-section') === sectionId
             );
@@ -1157,25 +1126,20 @@
             }
         }
 
-        // Toggle comparison text visibility
         function toggleComparison(comparisonId) {
             const comparisonElement = document.getElementById(comparisonId);
             if (comparisonElement.style.display === 'block') {
                 comparisonElement.style.display = 'none';
             } else {
-                // Hide all other comparisons first
                 const allComparisons = document.querySelectorAll('.comparison-text');
                 allComparisons.forEach(comp => {
                     comp.style.display = 'none';
                 });
-                // Show the clicked comparison
                 comparisonElement.style.display = 'block';
             }
         }
 
-        // Add event listeners to all navigation elements
         document.addEventListener('DOMContentLoaded', function() {
-            // Add click handlers to all elements with data-section attribute
             const navElements = document.querySelectorAll('[data-section]');
             navElements.forEach(element => {
                 element.addEventListener('click', function(e) {
@@ -1185,11 +1149,9 @@
                 });
             });
             
-            // Initialize home page
             showSection('home');
         });
 
-        // Calculator functionality
         let currentCalculator = '';
         
         function showCalculatorForm(calculatorName) {
@@ -1212,27 +1174,26 @@
                 return;
             }
             
-            // Simple calculation logic (for demonstration)
             let quantity, cost;
             
             if (currentCalculator === 'Кирпич') {
-                quantity = Math.ceil(area * 50); // 50 bricks per m²
-                cost = quantity * 15; // 15 rubles per brick
+                quantity = Math.ceil(area * 50); 
+                cost = quantity * 15; 
             } else if (currentCalculator === 'Бетон') {
-                quantity = Math.ceil((area * thickness / 1000) * 1.2); // 1.2 m³ per m² with thickness
-                cost = quantity * 4000; // 4000 rubles per m³
+                quantity = Math.ceil((area * thickness / 1000) * 1.2); 
+                cost = quantity * 4000; 
             } else if (currentCalculator === 'Утеплитель') {
-                quantity = Math.ceil(area * 1.1); // 1.1 m² per m² with waste
-                cost = quantity * 300; // 300 rubles per m²
+                quantity = Math.ceil(area * 1.1);
+                cost = quantity * 300; 
             } else if (currentCalculator === 'Штукатурка') {
-                quantity = Math.ceil((area * thickness / 10) * 1.1); // thickness in mm, 1.1 kg per mm per m²
-                cost = quantity * 25; // 25 rubles per kg
+                quantity = Math.ceil((area * thickness / 10) * 1.1); 
+                cost = quantity * 25; 
             } else if (currentCalculator === 'Краска') {
-                quantity = Math.ceil(area * 0.15); // 0.15 liters per m²
-                cost = quantity * 200; // 200 rubles per liter
+                quantity = Math.ceil(area * 0.15); 
+                cost = quantity * 200; 
             } else if (currentCalculator === 'Доски') {
-                quantity = Math.ceil(area * 2); // 2 boards per m²
-                cost = quantity * 120; // 120 rubles per board
+                quantity = Math.ceil(area * 2); 
+                cost = quantity * 120; 
             }
             
             document.getElementById('quantity-result').textContent = 
@@ -1245,4 +1206,5 @@
         }
     </script>
 </body>
+
 </html>
